@@ -26,7 +26,7 @@ public class CustomerRepository {
 		String dbPassword = "3edc$RFV";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(dbURL,dbUsername , dbPassword);
 		
 		} catch (Exception e) {
@@ -69,6 +69,8 @@ public class CustomerRepository {
 		}
 	return CustomerList ;
 	}
+	
+	
 
 	
 
