@@ -47,4 +47,5 @@ public class DoctorDetails {
 				+ ", Pnumber=" + Pnumber + "]";
 	}
 	
+	
 }
