@@ -20,7 +20,7 @@ import model.Hospital;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("myresource")
+@Path("hospital")
 public class MyResource {
 	Hospital hObj = new Hospital();
 
@@ -79,16 +79,4 @@ public class MyResource {
 	
 	return output;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

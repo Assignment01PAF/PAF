@@ -90,7 +90,7 @@ public class Hospital {
 			
 			// buttons
 			output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btn btn-secondary\">"
-			+ "<form method=\"post\" action=\"items.jsp\">"
+			+ "<form method=\"post\" action=\"hospital.jsp\">"
 			+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
 			+ "<input name=\"hID\" type=\"hidden\" value=\"" + hID + "\">" + "</form></td></tr>";
 			}
@@ -161,7 +161,7 @@ public class Hospital {
 				con.close();
 				output = "Deleted successfully";
 			} catch (Exception e) {
-				output = "Error while deleting the hospital.";
+				output = "Error while deleting the hospital!";
 				System.err.println(e.getMessage());
 			}
 			return output;
