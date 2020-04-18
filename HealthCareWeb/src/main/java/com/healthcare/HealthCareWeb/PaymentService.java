@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 public class PaymentService {
 
 	@GET
-	@Path("/")
+	@Path("/view")
 	@Produces(MediaType.APPLICATION_JSON) 
 
 	public String View_Payment() {
@@ -36,7 +36,6 @@ public class PaymentService {
 		
 		JsonObject PAYdetails = new JsonParser().parse(details).getAsJsonObject();
 		
-		//int paymnetiD = PAYdetails.get("paymentID").getAsInt();
 		int hospitaliD = PAYdetails.get("hospitalID").getAsInt();
 		int patientiD = PAYdetails.get("patientID").getAsInt();
 		int appointmentiD = PAYdetails.get("appointmentID").getAsInt();
@@ -50,7 +49,6 @@ public class PaymentService {
 		 
 		 
 		Payment pay = new Payment();
-	//	pay.setPaymentID(paymnetiD);
 		pay.setHospitalID(hospitaliD);
 		pay.setPatientID(patientiD);
 		pay.setAppointmentID(appointmentiD);

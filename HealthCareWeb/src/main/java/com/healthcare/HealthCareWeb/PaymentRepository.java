@@ -42,17 +42,17 @@ public String ViewPayment() {
 	         
 					a = "<table>"
 	     				+ "<tr>"
-	     				+ "<th>paymentID<td>"	     				
-	     				+ "<th>hospitalID<td>"
-	     				+ "<th>patientID<td>"
-	     				+ "<th>appointmentID<td>"
+	     				+ "<th>payment ID<td>"	     				
+	     				+ "<th>Hospital ID<td>"
+	     				+ "<th>Patient ID<td>"
+	     				+ "<th>Appointment ID<td>"
 	     				+ "<th>type<td>"
-	     				+ "<th>amount<td>"
-	     				+ "<th>date<td>"
-	     				+ "<th>creditCardNumber<td>"
+	     				+ "<th>Amount<td>"
+	     				+ "<th>Date<td>"
+	     				+ "<th>CreditCard Number<td>"
 	     				+ "<th>cvc<td>"
-	     				+ "<th>cardHolderName<td>"
-	     				+ "<th>req_stat_cancl<td>"	     				 
+	     				+ "<th>CardHolder Name<td>"
+	     				+ "<th>Request to cancel or not<td>"	     				 
 	     				+ "</tr>";
 					
 					
@@ -100,7 +100,6 @@ public String addPayment(Payment pay) {
 
 		PreparedStatement pst = con.prepareStatement(sql);
 
-		//pst.setInt(1, pay.getPaymentID());
 		pst.setInt(1, pay.getHospitalID());
 		pst.setInt(2, pay.getPatientID());
 		pst.setInt(3, pay.getAppointmentID());
