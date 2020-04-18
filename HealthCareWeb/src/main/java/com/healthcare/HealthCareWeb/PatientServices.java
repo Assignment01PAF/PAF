@@ -227,6 +227,6 @@ public void update(PatientDetails pd) {
 
 		return dr;
 	}
-	
+
 
 }
