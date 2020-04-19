@@ -8,12 +8,12 @@ import java.sql.Statement;
 
 public class Hospital {
 	
-	// A common method to connect to the DB
+	//DB Connection
 		private Connection connect() {
 			Connection con = null;
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				// Provide the correct details: DBServer/DBName, username, password
+				//DB details: DBServer/DBName, user name, password
 				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hospitaldb?serverTimezone=UTC", "root", "");
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -30,13 +30,13 @@ public class Hospital {
 				if (con == null) {
 					return "Error while connecting to the database for inserting.";
 				}
-				// create a prepared statement
+				//Prepared statement
 				String query = "insert into hospital (`hName`,`hPhone`,`hAddress`,`hEmail`,`hType`)"
 						+ " values (?, ?, ?, ?, ?)";
 
 				PreparedStatement preparedStmt = con.prepareStatement(query);
+				
 				// binding values
-				//preparedStmt.setInt(1, 0);
 				preparedStmt.setString(1, hName);
 				preparedStmt.setString(2, hPhone);
 				preparedStmt.setString(3, hAddress);
@@ -63,7 +63,7 @@ public class Hospital {
 			if (con == null)
 			{return "Error while connecting to the database for reading."; }
 			
-			// Prepare the html table to be displayed
+			//HTML Table
 			output = "<table border=\"1\"><tr><th>Name</th><th>Phone</th>"
 					+ "<th>Address</th>"
 					+ "<th>Email</th><th>Type</th><th>Actions</th></tr>";
@@ -71,7 +71,7 @@ public class Hospital {
 			String query = "select * from hospital";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			// iterate through the rows in the result set
+			
 			while (rs.next())
 			{
 			String hID = Integer.toString(rs.getInt("hID"));
@@ -81,21 +81,21 @@ public class Hospital {
 			String hEmail = rs.getString("hEmail");
 			String hType = rs.getString("hType");
 
-			// Add into the html table
+			// Add into the HTML table
 			output += "<tr><td>" + hName + "</td>";
 			output += "<td>" + hPhone + "</td>";
 			output += "<td>" + hAddress + "</td>";
 			output += "<td>" + hEmail + "</td>";
 			output += "<td>" + hType + "</td>";
 			
-			// buttons
+			//Action buttons
 			output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btn btn-secondary\">"
 			+ "<form method=\"post\" action=\"hospital.jsp\">"
 			+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
 			+ "<input name=\"hID\" type=\"hidden\" value=\"" + hID + "\">" + "</form></td></tr>";
 			}
 			con.close();
-			// Complete the html table
+			
 			output += "</table>";
 			}
 			catch (Exception e)
@@ -115,13 +115,12 @@ public class Hospital {
 				if (con == null)
 				{return "Error while connecting to the database for updating."; }
 				
-				// create a prepared statement
+				//Prepared statement
 				String query = "UPDATE hospital SET hName=?,hPhone=?,hAddress=?,hEmail=?,hType=? WHERE hID=?";
 				
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 				
 				// binding values
-				//preparedStmt.setInt(1, 0);
 				preparedStmt.setString(1, hName);
 				preparedStmt.setString(2, hPhone);
 				preparedStmt.setString(3, hAddress);
@@ -149,7 +148,7 @@ public class Hospital {
 				if (con == null) {
 					return "Error while connecting to the database for deleting.";
 				}
-				// create a prepared statement
+				//Prepared statement
 				String query = "delete from hospital where hID=?";
 				
 				PreparedStatement preparedStmt = con.prepareStatement(query);

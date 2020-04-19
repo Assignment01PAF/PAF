@@ -17,9 +17,7 @@ import org.jsoup.nodes.Document;
 
 import model.Hospital;
 
-/**
- * Root resource (exposed at "myresource" path)
- */
+
 @Path("hospital")
 public class MyResource {
 	Hospital hObj = new Hospital();
@@ -29,11 +27,10 @@ public class MyResource {
 	public String getIt() {
 
 		return hObj.readHospitals();
-		// return "Got it!";
+		
 	}
 	
 	@POST
-	//@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String insert(@FormParam("hName") String hName, @FormParam("hPhone") String hPhone, @FormParam("hAddress") String hAddress, @FormParam("hEmail") String hEmail, @FormParam("hType") String hType) {
@@ -43,7 +40,6 @@ public class MyResource {
 	}
 	
 	@PUT
-	//@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String update(String hospitalData) {
@@ -63,7 +59,6 @@ public class MyResource {
 	}
 	
 	@DELETE
-	//@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String delete(String hospitalData)
