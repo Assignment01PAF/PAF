@@ -191,5 +191,62 @@ public String DeletePayment(int id) {
 	return status;
 
 	}
+
+public String ViewCancelPayment() {
+	
+	String a = null;
+	
+	try {
+		String sql = "SELECT * FROM payment WHERE req_stat_cancl = 'cancel'";
+		PreparedStatement pst = con.prepareStatement(sql);
+		ResultSet rst = pst.executeQuery(); 
+         
+				a = "<table>"
+     				+ "<tr>"
+     				+ "<th>payment ID<td>"	     				
+     				+ "<th>Hospital ID<td>"
+     				+ "<th>Patient ID<td>"
+     				+ "<th>Appointment ID<td>"
+     				+ "<th>type<td>"
+     				+ "<th>Amount<td>"
+     				+ "<th>Date<td>"
+     				+ "<th>CreditCard Number<td>"
+     				+ "<th>cvc<td>"
+     				+ "<th>CardHolder Name<td>"
+     				+ "<th>Request to cancel or not<td>"	     				 
+     				+ "</tr>";
+				
+				
+		
+         while (rst.next()) {
+         
+        	   a +=  "<tr>"
+     				+ "<td>"+rst.getInt("paymentID")+"<td>"
+     				+ "<td>"+rst.getInt("hospitalID")+"<td>"
+     				+ "<td>"+rst.getInt("patientID")+"<td>"
+     				+ "<td>"+rst.getInt("appointmentID")+"<td>"
+     				+ "<td>"+rst.getString("type")+"<td>"
+     				+ "<td>"+rst.getString("amount")+"<td>"
+     				+ "<td>"+rst.getString("date")+"<td>"
+    	     		+ "<td>"+rst.getString("creditCardNumber")+"<td>"
+    	     		+ "<td>"+rst.getInt("cvc")+"<td>"
+    	     		+ "<td>"+rst.getString("cardHolderName")+"<td>"
+     				+ "<td>"+rst.getString("req_stat_cancl")+"<td>"	     							 
+     				+ "</tr>";
+     		
+         }
+         
+         a += "</table>";
+         
+         
+		} catch (SQLException e) {
+			 
+			e.printStackTrace();
+		}
+          
+	
+	return a;
+
+	}
 	
 }

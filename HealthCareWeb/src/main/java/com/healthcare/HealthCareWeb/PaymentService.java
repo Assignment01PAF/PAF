@@ -28,6 +28,19 @@ public class PaymentService {
 		return status;
 	} 
 	
+	@GET
+	@Path("/viewcncl")
+	@Produces(MediaType.APPLICATION_JSON) 
+
+	public String View_cancel_Payment() {
+		
+		 PaymentRepository model = new  PaymentRepository();
+		 String status = model.ViewCancelPayment();
+
+		
+		return status;
+	} 
+	
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
