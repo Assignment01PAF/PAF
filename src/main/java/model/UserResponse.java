@@ -25,7 +25,7 @@ public class UserResponse {
 		try {
 			Connection con = connect();
 			if (con == null) {
-				return "Error while connecting to the database for inserting.";
+				return "Error while connecting to the database for inserting!";
 			}
 			
 			String query = "insert into message (`mName`,`mEmail`,`mPhone`,`mMsg`)"
@@ -98,7 +98,7 @@ public class UserResponse {
 		}
 		catch (Exception e)
 		{
-		output = "Error while reading the responses.";
+		output = "Error while reading the responses!";
 		System.err.println(e.getMessage());
 		}
 		return output;
@@ -111,7 +111,7 @@ public class UserResponse {
 		{
 			Connection con = connect();
 			if (con == null)
-			{return "Error while connecting to the database for updating."; }
+			{return "Error while connecting to the database for updating!"; }
 			
 			
 			String query = "UPDATE message SET mName=?,mEmail=?,mPhone=?,mMsg=? WHERE mID=?";
@@ -128,7 +128,7 @@ public class UserResponse {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			output = "Updated successfully!";
 			}
 			catch (Exception e)
 			{
@@ -155,7 +155,7 @@ public class UserResponse {
 			
 			preparedStmt.execute();
 			con.close();
-			output = "Deleted successfully";
+			output = "Deleted successfully!";
 		} catch (Exception e) {
 			output = "Error while deleting the response!";
 			System.err.println(e.getMessage());

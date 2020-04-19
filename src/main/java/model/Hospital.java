@@ -158,7 +158,7 @@ public class Hospital {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Deleted successfully";
+				output = "Deleted successfully!";
 			} catch (Exception e) {
 				output = "Error while deleting the hospital!";
 				System.err.println(e.getMessage());
