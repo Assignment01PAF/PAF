@@ -30,6 +30,8 @@ public class PharmaStoRepository {
 	}
 	
 	
+	
+	///Retrieve Stock
 	public ArrayList<PharmaSto> getSto() {
 		ArrayList<PharmaSto> stoList = new ArrayList <>() ;
 		
@@ -54,6 +56,75 @@ public class PharmaStoRepository {
 			
 		}
 	return stoList ;
+	}
+	
+	
+	///Insert Stock
+	public void addPharma( PharmaSto pharmaSto){
+		
+		try {
+			String Insertquery = "insert into stock(LineNo, Icode, PackSize, Iname, SupPrice, SupDiscount, CostPrice, Selling, WholeSalePrice, Date) "
+					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			preStatement = con.prepareStatement(Insertquery);
+			
+			preStatement.setString(1, pharmaSto.getLineNo());
+			preStatement.setString(2, pharmaSto.getIcode());
+			preStatement.setString(3, pharmaSto.getPackSize());
+			preStatement.setString(4, pharmaSto.getIname());
+			preStatement.setString(5, pharmaSto.getSupPrice());
+			preStatement.setString(6, pharmaSto.getSupDiscount());
+			preStatement.setString(7, pharmaSto.getCostPrice());
+			preStatement.setString(8, pharmaSto.getSelling());
+			preStatement.setString(9, pharmaSto.getWholeSalePrice());
+			preStatement.setString(10, pharmaSto.getDate());
+			
+			preStatement.executeUpdate() ;	
+			
+		}catch(Exception e)	{
+			System.out.println(e);
+			
+		}
+	}
+	
+	
+	///Update Stock
+	public void updateitem(String iCode, PharmaSto pharmaSto){
+		
+		try {
+			String updateQuery = "update stock as s set s.LineNo = '"+pharmaSto.getLineNo()+"', "
+					+ "s.Icode ='"+pharmaSto.getIcode()+"', s.PackSize ='"+pharmaSto.getPackSize()+"'"
+					+ ", s.Iname = '"+pharmaSto.getIname()+"', s.SupPrice ='"+pharmaSto.getSupPrice()+"', "
+							+ "s.SupDiscount ='"+pharmaSto.getSupDiscount()+"',"
+					+ " s.CostPrice ='"+pharmaSto.getCostPrice()+"', s.Selling ='"+pharmaSto.getSelling()+"',"
+							+ " s.WholeSalePrice ='"+pharmaSto.getWholeSalePrice()+"', s.Date='"+pharmaSto.getDate()+"' where s.Icode = ?";
+			
+			preStatement = con.prepareStatement(updateQuery);
+			preStatement.setString(1, iCode);
+			preStatement.executeUpdate();
+			
+			
+		}catch(Exception e)	{
+			System.out.println(e);
+			
+		}
+	}
+	
+	////Delete Item
+	public void removeItem(String iCode){
+		try {
+			String deleteQuery = "delete from stock where stock.Icode = ?";
+			preStatement = con.prepareStatement(deleteQuery);
+			
+			preStatement.setString(1, iCode);
+			preStatement.executeUpdate();
+			
+			
+		}catch(Exception e)	{
+			System.out.println(e);
+			
+		}
+		
+		
 	}
 	
 	
