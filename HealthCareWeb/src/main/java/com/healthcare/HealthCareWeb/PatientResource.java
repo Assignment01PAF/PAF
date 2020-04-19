@@ -73,7 +73,7 @@ public class PatientResource {
 
 	}
 
-	// Update Patient
+	// Update Patient details
 	@PUT
 	@Path("updatePatient")
 	public PatientDetails update(PatientDetails pd) {
