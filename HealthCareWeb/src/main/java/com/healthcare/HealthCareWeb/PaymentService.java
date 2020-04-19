@@ -42,7 +42,7 @@ public class PaymentService {
 	} 
 	
 	@POST
-	@Path("/")
+	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	
 	public String Add_Payment(String details) {
@@ -82,7 +82,7 @@ public class PaymentService {
 	}
 	
 	@PUT
-	@Path("/")
+	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	
 	public String Update_Payment(String details) {
@@ -123,7 +123,7 @@ public class PaymentService {
 	}
 	
 	@DELETE
-	@Path("/")
+	@Path("/delete")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON) 
 	
