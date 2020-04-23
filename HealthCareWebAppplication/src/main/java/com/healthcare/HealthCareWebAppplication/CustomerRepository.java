@@ -44,7 +44,7 @@ public class CustomerRepository {
 		ArrayList<Customer> CustomerList = new ArrayList <>() ;
 		
 		try {
-			String Excu_query2 = "select * from customer";
+			String Excu_query2 = "select * from customer where customer.Register = '0'";
 			statement = con.createStatement();
 			
 			ResultSet customerResultSet = statement.executeQuery(Excu_query2) ;
@@ -70,6 +70,43 @@ public class CustomerRepository {
 			
 		}
 	return CustomerList ;
+	}
+
+
+
+	public void CustomerRegister(String cId, Customer customer) {
+		// TODO Auto-generated method stub
+		try {
+			String updateQuery = "update customer as c set c.Register = '1'  where c.CustomerID = ?";
+			
+			preStatement = con.prepareStatement(updateQuery);
+			preStatement.setString(1, cId);
+			preStatement.executeUpdate();
+			
+			
+		}catch(Exception e)	{
+			System.out.println(e);
+			
+		}
+		
+	}
+
+
+
+	public void removeCustomer(String cId) {
+		// TODO Auto-generated method stub
+		try {
+			String deleteQuery = "delete from customer where customer.CustomerID = ?";
+			preStatement = con.prepareStatement(deleteQuery);
+			
+			preStatement.setString(1, cId);
+			preStatement.executeUpdate();
+			
+			
+		}catch(Exception e)	{
+			System.out.println(e);
+			
+		}
 	}
 	
 

@@ -29,8 +29,6 @@ public class PharmaStoRepository {
 		} 
 	}
 	
-	
-	
 	///Retrieve Stock
 	public ArrayList<PharmaSto> getSto() {
 		ArrayList<PharmaSto> stoList = new ArrayList <>() ;
