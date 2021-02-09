@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CustomerResourceService WSDL service -->
+
+  <service name="CustomerResource" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://HealthCareWebAppplication.healthcare.com"/>
+      <parameter name="wsdlServiceElement" value="CustomerResourceService"/>
+      <parameter name="schemaQualified" value="http://HealthCareWebAppplication.healthcare.com"/>
+      <parameter name="wsdlServicePort" value="CustomerResource"/>
+      <parameter name="className" value="com.healthcare.HealthCareWebAppplication.CustomerResource"/>
+      <parameter name="wsdlPortType" value="CustomerResource"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://HealthCareWebAppplication.healthcare.com" xmlns:retNS="http://HealthCareWebAppplication.healthcare.com" xmlns:rtns="http://HealthCareWebAppplication.healthcare.com" xmlns:tns="http://HealthCareWebAppplication.healthcare.com" name="getCustomer" qname="operNS:getCustomer" returnQName="retNS:getCustomerReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getCustomer"/>
+
+      <arrayMapping xmlns:ns="http://HealthCareWebAppplication.healthcare.com" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://HealthCareWebAppplication.healthcare.com" qname="ns:&gt;getCustomer" type="java:com.healthcare.HealthCareWebAppplication.GetCustomer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://HealthCareWebAppplication.healthcare.com" qname="ns:&gt;getCustomerResponse" type="java:com.healthcare.HealthCareWebAppplication.GetCustomerResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

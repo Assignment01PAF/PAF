@@ -15,6 +15,8 @@ public class Customer {
 	String Gender;
 	Date DOB;
 	Boolean Register;
+	
+	
 	public String getCustomerID() {
 		return CustomerID;
 	}
